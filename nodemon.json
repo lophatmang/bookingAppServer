@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGODB_USER": "nhoktaha",
+    "MONGODB_PASSWORD": "thanh123",
+    "MONGODB_DEFAULT_DATABASE": "booking"
+  }
+}

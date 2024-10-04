@@ -4,9 +4,11 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 
+const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0.yscz2.mongodb.net/${process.env.MONGODB_DEFAULT_DATABASE}?retryWrites=true&w=majority&appName=Cluster0`;
+
 const userRouter = require("./routes/user");
 const hotelRouter = require("./routes/hotel");
-const adminRouter = require('./routes/admin')
+const adminRouter = require("./routes/admin");
 
 app.use(cors(), bodyParser.json());
 
@@ -21,9 +23,7 @@ app.use((req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://nhoktaha:thanh123@cluster0.yscz2.mongodb.net/booking?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(MONGODB_URI)
   .then(() => {
     app.listen(5000);
   })
